@@ -10,7 +10,9 @@ import studio.arinova.artecommerce.dto.CustomerSignupDTO;
 import studio.arinova.artecommerce.dto.OtpDTO;
 import studio.arinova.artecommerce.model.Customer;
 import studio.arinova.artecommerce.repository.CustomerRepositoryImpl;
+import studio.arinova.artecommerce.service.mail.MailService;
 import studio.arinova.artecommerce.utility.GeneralUtility;
+import studio.arinova.artecommerce.utility.MailUtility;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,6 +29,8 @@ public class SignupService {
     private final CustomerRepositoryImpl customerRepository;
     private final GeneralUtility generalUtility;
     private final PasswordEncoder passwordEncoder;
+    private final MailUtility mailUtility;
+    private final MailService mailService;
 
     public ResponseEntity<?> signupHandlerCustomer(CustomerSignupDTO customerSignupDTO) {
         // Here we have to firstly check that if any user doesn't exist by the email.
@@ -44,7 +48,17 @@ public class SignupService {
 
         // Now we have to send the otp will do that task later.
         String otp = generalUtility.generateOTP();
-        log.info("OTP is {}", otp);
+        // log.info("OTP is {}", otp);
+
+        // Sending OTP.
+        String mailBody = mailUtility.createOTPMessage(customerSignupDTO.getName(), otp);
+        if (!mailService.sendMail(customerSignupDTO.getEmail(), "One Time Password", mailBody)) {
+            return ResponseEntity
+                    .badRequest()
+                    .body("Failed to send the otp, try again later");
+        }
+
+        log.info("OTP has been successfully sent to the person's email: {}", customerSignupDTO.getEmail());
 
         // Setting the otp.
         otpPersistenceStorage.put(customerSignupDTO.getEmail(), otp);
