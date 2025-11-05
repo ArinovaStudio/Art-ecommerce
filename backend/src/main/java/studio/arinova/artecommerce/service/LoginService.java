@@ -21,7 +21,7 @@ public class LoginService {
     public ResponseEntity<?> loginHandler(LoginDTO loginDTO) {
         Authentication authentication = authenticationManager
                 .authenticate(new UsernamePasswordAuthenticationToken(
-                        GeneralUtility.concatEmailAndRole(loginDTO.getEmail(), loginDTO.getUserType())
+                        loginDTO.getEmail()
                         , loginDTO.getPassword())
                 );
 

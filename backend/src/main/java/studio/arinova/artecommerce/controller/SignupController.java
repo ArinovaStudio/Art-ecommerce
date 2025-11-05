@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import studio.arinova.artecommerce.dto.CustomerSignupDTO;
+import studio.arinova.artecommerce.dto.SignupDTO;
 import studio.arinova.artecommerce.dto.OtpDTO;
 import studio.arinova.artecommerce.service.SignupService;
 
@@ -17,12 +17,12 @@ public class SignupController {
 
     private final SignupService signupService;
 
-    @PostMapping("/customer")
-    public ResponseEntity<?> handleCustomerSignup(@RequestBody CustomerSignupDTO customerSignupDTO) {
-        return signupService.signupHandlerCustomer(customerSignupDTO);
+    @PostMapping
+    public ResponseEntity<?> handleCustomerSignup(@RequestBody SignupDTO signupDTO) {
+        return signupService.signupHandlerCustomer(signupDTO);
     }
 
-    @PostMapping("/customer/otp")
+    @PostMapping("/otp")
     public ResponseEntity<?> handleCustomerOTP(@RequestBody OtpDTO otpDTO) {
         return signupService.otpValidation(otpDTO);
     }

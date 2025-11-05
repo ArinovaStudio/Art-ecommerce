@@ -5,8 +5,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import studio.arinova.artecommerce.enums.UserType;
-import studio.arinova.artecommerce.model.Customer;
-import studio.arinova.artecommerce.model.Seller;
+import studio.arinova.artecommerce.model.User;
 
 import java.util.Collection;
 import java.util.List;
@@ -19,23 +18,11 @@ public class CustomUserDetails implements UserDetails {
     private final String password;
     private final UserType userType;
 
-    public CustomUserDetails(Object object) {
-        if (object instanceof Customer customer) {
-            this.name = customer.getName();
-            this.email = customer.getEmail();
-            this.password = customer.getPassword();
-            this.userType = UserType.CUSTOMER;
-        } else if (object instanceof Seller seller) {
-            this.name = seller.getName();
-            this.email = seller.getEmail();
-            this.password = seller.getPassword();
-            this.userType = UserType.SELLER;
-        } else {
-            this.name = null;
-            this.email = null;
-            this.password = null;
-            this.userType = null;
-        }
+    public CustomUserDetails(User user) {
+        this.name = user.getName();
+        this.email = user.getEmail();
+        this.password = user.getPassword();
+        this.userType = user.getUserType();
     }
 
     @Override
