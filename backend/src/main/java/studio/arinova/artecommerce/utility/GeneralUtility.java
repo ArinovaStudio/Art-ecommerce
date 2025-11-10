@@ -1,7 +1,7 @@
 package studio.arinova.artecommerce.utility;
 
 import org.springframework.stereotype.Component;
-import studio.arinova.artecommerce.enums.UserType;
+import studio.arinova.artecommerce.enums.Role;
 
 import java.security.SecureRandom;
 import java.util.Map;
@@ -11,7 +11,7 @@ public class GeneralUtility {
 
     private final SecureRandom secureRandom = new SecureRandom();
 
-    public static String concatEmailAndRole(String email, UserType role) {
+    public static String concatEmailAndRole(String email, Role role) {
         return String.format("%s:%s", email.trim(), String.valueOf(role).trim());
     }
 

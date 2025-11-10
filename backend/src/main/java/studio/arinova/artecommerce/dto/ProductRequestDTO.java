@@ -4,14 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import studio.arinova.artecommerce.enums.Role;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class LoginDTO {
-    private Role userType;
-    private String email;
-    private String password;
+public class ProductRequestDTO {
+    private String title;
+    private String description;
+    private String category;
+    private Long artistId;
 }

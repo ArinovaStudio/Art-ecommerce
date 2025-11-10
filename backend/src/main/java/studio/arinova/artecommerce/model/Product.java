@@ -1,9 +1,6 @@
 package studio.arinova.artecommerce.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -26,11 +23,18 @@ public class Product {
     private String title;
     private String description;
     private ProductCategory category;
-    @OneToOne
+
+    // Many products can be linked to one user.
+    @ManyToOne
     @JoinColumn(name = "artist_id", referencedColumnName = "id")
     private User artist;
 
     private BigDecimal price;
+
     private List<String> imageURLs;
+
+    // One product can have many reviews.
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Review> reviews;
 
 }

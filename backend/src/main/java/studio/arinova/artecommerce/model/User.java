@@ -1,13 +1,13 @@
 package studio.arinova.artecommerce.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import studio.arinova.artecommerce.enums.UserType;
+import studio.arinova.artecommerce.enums.Role;
+
+import java.util.List;
 
 @Data
 @Builder
@@ -16,10 +16,15 @@ import studio.arinova.artecommerce.enums.UserType;
 @Entity(name = "user_data")
 public class User {
     @Id
-    private String id;
+    private Long id;
     private String name;
     private String email;
     private String password;
     @Column(name = "user_type")
-    private UserType userType;
+    private Role role;
+    private String artStyle; // Main style.
+
+    // One user can have many products.
+    @OneToMany(mappedBy = "artist", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Product> artWorks;
 }

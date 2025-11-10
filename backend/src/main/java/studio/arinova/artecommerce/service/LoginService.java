@@ -8,7 +8,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import studio.arinova.artecommerce.dto.LoginDTO;
+import studio.arinova.artecommerce.security.CustomUserDetails;
 import studio.arinova.artecommerce.utility.GeneralUtility;
+import studio.arinova.artecommerce.utility.JwtUtility;
 
 import java.util.Map;
 
@@ -17,6 +19,7 @@ import java.util.Map;
 public class LoginService {
 
     private final AuthenticationManager authenticationManager;
+    private final JwtUtility jwtUtility;
 
     public ResponseEntity<?> loginHandler(LoginDTO loginDTO) {
         Authentication authentication = authenticationManager
@@ -27,8 +30,14 @@ public class LoginService {
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
+        CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+
+        // Since here we need to create the token n all.
+        String token = jwtUtility.generateToken(userDetails.getId(), userDetails.getName(), userDetails.getEmail());
+
         return ResponseEntity.ok(Map.of(
-                "response", "Login Successfully"
+                "response", "Logged in successfully.",
+                "token", token
         ));
     }
 

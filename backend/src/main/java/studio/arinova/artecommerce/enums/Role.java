@@ -1,6 +1,6 @@
 package studio.arinova.artecommerce.enums;
 
-public enum UserType {
+public enum Role {
     USER,
     ARTIST,
     ADMIN
