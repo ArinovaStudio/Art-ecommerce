@@ -13,7 +13,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "user_data")
+@Entity(name = "users")
 public class User {
     @Id
     private Long id;
@@ -27,4 +27,9 @@ public class User {
     // One user can have many products.
     @OneToMany(mappedBy = "artist", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Product> artWorks;
+
+    // Here we are creating a cart with a one to one relationship.
+    // Means - One user can have only one cart.
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private Cart cart;
 }
