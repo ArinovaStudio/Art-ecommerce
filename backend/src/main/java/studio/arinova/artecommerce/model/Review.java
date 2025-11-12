@@ -12,7 +12,8 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "reviews")
+@Entity
+@Table(name = "reviews")
 public class Review {
 
     @Id
@@ -22,6 +23,7 @@ public class Review {
     private int rating;
     private String comment;
 
+    @Column(name = "created_at")
     private LocalDateTime createdAt;
 
     // Each review belong to one product.
@@ -33,5 +35,10 @@ public class Review {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
+
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+    }
 
 }

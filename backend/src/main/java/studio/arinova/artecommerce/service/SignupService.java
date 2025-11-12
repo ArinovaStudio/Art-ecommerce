@@ -47,15 +47,15 @@ public class SignupService {
 
         // Now we have to send the otp will do that task later.
         String otp = generalUtility.generateOTP();
-        // log.info("OTP is {}", otp);
+        log.info("OTP: {}", otp);
 
         // Sending OTP.
-        String mailBody = mailUtility.createOTPMessage(signupDTO.getName(), otp);
-        if (!mailService.sendMail(signupDTO.getEmail(), "One Time Password", mailBody)) {
-            return ResponseEntity
-                    .badRequest()
-                    .body("Failed to send the otp, try again later");
-        }
+//        String mailBody = mailUtility.createOTPMessage(signupDTO.getName(), otp);
+//        if (!mailService.sendMail(signupDTO.getEmail(), "One Time Password", mailBody)) {
+//            return ResponseEntity
+//                    .badRequest()
+//                    .body("Failed to send the otp, try again later");
+//        }
 
         log.info("OTP has been successfully sent to the person's email: {}", signupDTO.getEmail());
 
@@ -99,7 +99,6 @@ public class SignupService {
     private User mapToUser(SignupDTO signupDTO) {
         return User
                 .builder()
-                .id(generalUtility.generateIdForCustomer())
                 .email(signupDTO.getEmail())
                 .name(signupDTO.getName())
                 .password(passwordEncoder.encode(signupDTO.getPassword()))

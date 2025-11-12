@@ -18,6 +18,7 @@ import java.util.List;
 public class Product {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String title;
@@ -31,6 +32,7 @@ public class Product {
 
     private BigDecimal price;
 
+    @Column(name = "image_url")
     private List<String> imageURLs;
 
     // One product can have many reviews.

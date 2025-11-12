@@ -43,6 +43,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(req -> req
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/api/product/**").authenticated()
+                        .requestMatchers("/api/order/**").authenticated()
+                        .requestMatchers("/api/cart/**").authenticated()
                         .anyRequest().permitAll())
                 .build();
 

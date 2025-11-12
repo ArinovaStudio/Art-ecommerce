@@ -24,9 +24,4 @@ public class GeneralUtility {
     public String generateOTP() {
         return String.valueOf(secureRandom.nextInt(999999));
     }
-
-    public String generateIdForCustomer() {
-        return String.format("customer%d", secureRandom.nextInt(9999));
-    }
-
 }

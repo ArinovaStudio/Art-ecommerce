@@ -11,12 +11,12 @@ import studio.arinova.artecommerce.service.LoginService;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/auth/login")
+@RequestMapping("/api/auth")
 public class LoginController {
 
     private final LoginService loginService;
 
-    @PostMapping
+    @PostMapping("/login")
     public ResponseEntity<?> handleLogin(@RequestBody LoginDTO loginDTO) {
         return loginService.loginHandler(loginDTO);
     }
