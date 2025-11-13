@@ -24,10 +24,6 @@ const TopRatedPage = () => {
 
   const currentArtData =
     activeFilter === 'Portrait' ? portraitData : landscapeData;
-  const viewAllText =
-    activeFilter === 'Portrait'
-      ? 'V I E W   A L L'
-      : 'V I E W   L A N D S C A P E';
 
   const cardsSectionClass =
     activeFilter === 'Landscape'
@@ -65,10 +61,10 @@ const TopRatedPage = () => {
           </div>
         </div>
 
-        <div className="header-view-all">{viewAllText}</div>
+        <div className="header-view-all">VIEW</div>
       </header>
 
-      <main className={cardsSectionClass}>
+      <main style={{ padding: '0 84px' }} className={cardsSectionClass}>
         {currentArtData.map((art, index) => (
           <ArtDisplayCard key={index} title={art.title} image={art.image} />
         ))}

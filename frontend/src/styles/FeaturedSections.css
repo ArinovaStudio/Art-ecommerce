@@ -2,8 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  max-width: 1728px;
   margin: 0 auto;
   background: #ffffff;
   box-sizing: border-box;
@@ -16,7 +14,6 @@
   align-items: center;
   padding: 56px 66px;
   width: 100%;
-  max-width: 1728px;
   box-sizing: border-box;
 }
 
@@ -145,7 +142,6 @@
 .featured-artists-section-wrapper {
   /* Frame 19: background: #F4F4F2; padding: 56px 100px; */
   width: 100%;
-  max-width: 1728px;
   background: #f4f4f2; /* Off White 2 */
   padding: 56px 100px;
   box-sizing: border-box;

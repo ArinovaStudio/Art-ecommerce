@@ -1,5 +1,5 @@
 @import 'tailwindcss';
-
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500&family=DM+Serif+Display&family=Inria+Serif&family=Instrument+Serif&family=Karla:wght@400;600;700&display=swap');
 :root {
   --color-primary: #1e293b;
   --color-secondary: #3b82f6;
@@ -10,4 +10,27 @@
 body {
   background-color: var(--color-background);
   color: var(--color-text);
+}
+
+@font-face {
+  font-family: 'Optima LT Std';
+  src: url('./assets/fonts/OptimaLTStd-Roman.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Optima LT Std: Italic (400) */
+@font-face {
+  font-family: 'Optima LT Std';
+  src: url('./assets/fonts/OptimaLTStd-Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Optima LT Std: Semi-Bold (600) */
+@font-face {
+  font-family: 'Optima LT Std';
+  src: url('./assets/fonts/OptimaLTStd-Medium.otf') format('opentype'); /* Assuming Medium or Bold maps to 600 */
+  font-weight: 600;
+  font-style: normal;
 }

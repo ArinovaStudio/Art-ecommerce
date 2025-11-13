@@ -1,4 +1,3 @@
-// Navbar.jsx
 import React from 'react';
 import { Search, UserRound, ShoppingBag } from 'lucide-react';
 
