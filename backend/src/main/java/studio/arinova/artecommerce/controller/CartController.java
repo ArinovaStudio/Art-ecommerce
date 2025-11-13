@@ -32,4 +32,10 @@ public class CartController {
         cartService.removeItem(request.getUserId(), request.getProductId());
         return ResponseEntity.ok(Map.of("message", "Item removed"));
     }
+
+    @PutMapping("/update")
+    public ResponseEntity<?> updateItem(@RequestBody CartRequestDTO request) {
+        cartService.updateItem(request.getUserId(), request.getProductId(), request.getQuantity());
+        return ResponseEntity.ok(Map.of("message", "Cart item updated"));
+    }
 }

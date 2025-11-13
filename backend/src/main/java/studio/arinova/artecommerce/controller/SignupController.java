@@ -11,18 +11,18 @@ import studio.arinova.artecommerce.dto.OtpDTO;
 import studio.arinova.artecommerce.service.SignupService;
 
 @RestController
-@RequestMapping("/api/auth/signup")
+@RequestMapping("/api/auth")
 @RequiredArgsConstructor
 public class SignupController {
 
     private final SignupService signupService;
 
-    @PostMapping
+    @PostMapping("/signup")
     public ResponseEntity<?> handleCustomerSignup(@RequestBody SignupDTO signupDTO) {
         return signupService.signupHandlerCustomer(signupDTO);
     }
 
-    @PostMapping("/otp")
+    @PostMapping("/signup/otp")
     public ResponseEntity<?> handleCustomerOTP(@RequestBody OtpDTO otpDTO) {
         return signupService.otpValidation(otpDTO);
     }

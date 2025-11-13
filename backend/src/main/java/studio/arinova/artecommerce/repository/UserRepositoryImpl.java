@@ -27,9 +27,9 @@ public class UserRepositoryImpl implements UserRepository {
         // Creating type safe query so that it returns the customer entity.
         CriteriaQuery<User> query = cb.createQuery(User.class);
         // It defines the root entity the table from which we are querying.
-        Root<User> customer = query.from(User.class);
+        Root<User> user = query.from(User.class);
         // This line is equivalent to SELECT * FROM User WHERE email = email;
-        query.select(customer).where(cb.equal(customer.get("email"), email));
+        query.select(user).where(cb.equal(user.get("email"), email));
         List<User> result = entityManager.createQuery(query).getResultList();
 
         return result.isEmpty() ? null : result.get(0);
@@ -37,8 +37,8 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     @Transactional
-    public User save(User customer) {
-        entityManager.persist(customer);
-        return customer;
+    public User save(User user) {
+        entityManager.persist(user);
+        return user;
     }
 }

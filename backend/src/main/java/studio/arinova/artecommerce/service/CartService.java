@@ -45,4 +45,17 @@ public class CartService {
         cartRepository.save(cart);
     }
 
+    public void updateItem(Long userId, Long productId, int quantity) {
+        Cart cart = cartRepository.findByUserId(userId)
+                .orElseThrow(() -> new RuntimeException("Cart not found"));
+
+        cart.getItems().forEach(item -> {
+            if (item.getProduct().getId().equals(productId)) {
+                item.setQuantity(quantity);
+            }
+        });
+
+        cartRepository.save(cart);
+    }
+
 }

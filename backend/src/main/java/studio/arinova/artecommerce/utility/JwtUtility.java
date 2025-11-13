@@ -17,11 +17,12 @@ public class JwtUtility {
     @Value("${jwt.secret.key}")
     private String SECRET_KEY;
 
+    private Key signingKey;
     private final long EXPIRATION_TIME = 1000 * 60 * 60;
 
     @PostConstruct
-    private Key getSigningKey() {
-        return Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
+    private void init() {
+        signingKey = Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
     }
 
     public String generateToken(Long id, String name, String email) {
@@ -34,31 +35,32 @@ public class JwtUtility {
                 .claim("email", email)
                 .setIssuedAt(now)
                 .setExpiration(expiryDate)
-                .signWith(getSigningKey(), SignatureAlgorithm.HS256)
+                .signWith(signingKey, SignatureAlgorithm.HS256)
                 .compact();
     }
 
-    public Claims extractClaims(String token) throws Exception {
+    public Claims extractClaims(String token) {
         return Jwts.parserBuilder()
-                .setSigningKey(getSigningKey())
+                .setSigningKey(signingKey)
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
     }
 
-    public boolean isTokenValid(String token, Long id, String email) throws Exception{
+    public boolean isTokenValid(String token, Long id, String email) {
         Claims claims = extractClaims(token);
         String extractedId = claims.getSubject();
         String extractedEmail = claims.get("email", String.class);
-        return extractedId.equals(id) && extractedEmail.equals(email) && (!isTokenExpired(token));
+        return extractedId.equals(String.valueOf(id)) &&
+                extractedEmail.equals(email) &&
+                !isTokenExpired(token);
     }
 
-    public boolean isTokenExpired(String token) throws Exception {
+    public boolean isTokenExpired(String token) {
         return extractClaims(token).getExpiration().before(new Date());
     }
 
-    public Date getExpirationDate(String token) throws Exception {
+    public Date getExpirationDate(String token) {
         return extractClaims(token).getExpiration();
     }
-
 }

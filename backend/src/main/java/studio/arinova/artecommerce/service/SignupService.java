@@ -92,7 +92,7 @@ public class SignupService {
         return ResponseEntity.
                 status(HttpStatus.CREATED)
                 .body(Map.of(
-                        "response", "Customer User has been created successfully."
+                        "response", "User has been created successfully."
                 ));
     }
 
@@ -102,6 +102,7 @@ public class SignupService {
                 .email(signupDTO.getEmail())
                 .name(signupDTO.getName())
                 .password(passwordEncoder.encode(signupDTO.getPassword()))
+                .role(signupDTO.getRole())
                 .build();
     }
 
