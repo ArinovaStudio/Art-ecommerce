@@ -1,0 +1,315 @@
+.featured-paintings-section-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  background: #ffffff;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.featured-paintings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 56px 66px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.featured-paintings-title {
+  font-family: 'Optima LT Std', 'Georgia', serif;
+  font-weight: 400;
+  font-size: 52px;
+  line-height: 56px;
+  color: #161412;
+  margin: 0;
+}
+
+.featured-paintings-view-all {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #161412;
+}
+
+.featured-paintings-view-all svg {
+  width: 44px;
+  height: 24px;
+}
+
+/* --- painting stack --- */
+.painting-stack-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 111px;
+
+  width: 100%;
+  padding: 40px 66px 115px;
+  box-sizing: border-box;
+
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.painting-stack-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* --- Individual Painting Card --- */
+.painting-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  gap: 16px;
+  width: 232px;
+  flex-shrink: 0;
+}
+
+.painting-card.painting-2 {
+  gap: 10px;
+}
+
+.painting-image {
+  width: 232px;
+  background-size: cover;
+  background-position: center;
+  background-color: #d9d9d9;
+}
+
+/* Specific Image Heights */
+.painting-card.painting-1 .painting-image {
+  height: 216px;
+}
+.painting-card.painting-2 .painting-image {
+  height: 264px;
+}
+.painting-card.painting-3 .painting-image {
+  height: 200px;
+}
+.painting-card.painting-4 .painting-image {
+  height: 264px;
+}
+.painting-card.painting-5 .painting-image {
+  height: 248px;
+}
+
+.painting-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  color: #161412;
+  max-width: 232px;
+}
+
+.painting-title {
+  font-family: 'Optima LT Std', 'Georgia', serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #161412;
+  margin: 0;
+}
+
+.painting-artist {
+  font-family: 'Optima LT Std', 'Georgia', serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16px;
+  color: #65635f;
+  margin: 0;
+}
+
+.painting-medium {
+  font-family: 'Optima LT Std', 'Georgia', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #65635f;
+  margin: 0;
+}
+
+.featured-artists-section-wrapper {
+  /* Frame 19: background: #F4F4F2; padding: 56px 100px; */
+  width: 100%;
+  background: #f4f4f2; /* Off White 2 */
+  padding: 56px 100px;
+  box-sizing: border-box;
+  /* Auto layout: gap: 10px; */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0 auto;
+}
+
+.artists-content-wrapper {
+  /* Frame 13: Auto layout gap: 50px; */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 50px;
+  width: 100%;
+}
+
+.artists-section-title {
+  font-family: 'Karla', sans-serif;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 24px;
+  letter-spacing: 0.875px;
+  text-transform: uppercase;
+  color: #161412;
+  margin: 0;
+}
+
+.artist-cards-list {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 24px;
+  width: 100%;
+}
+
+.card-artist-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0;
+  gap: 24px;
+  width: 100%;
+  height: 100px;
+  flex-grow: 1;
+  box-sizing: border-box;
+  border: 1px solid rgba(101, 99, 95, 0.2); /* Grey / 20% */
+}
+
+.artist-profile-image {
+  width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+  background-size: cover;
+  background-position: center;
+  background-color: #c4c4c4;
+}
+
+.artist-details {
+  /* Frame 5: Auto layout gap: 3px; */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  gap: 3px;
+  flex-grow: 1;
+  padding-right: 10px;
+}
+
+.artist-name {
+  font-family: 'Karla', sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 34px;
+  text-transform: uppercase;
+  color: #161412;
+  margin: 0;
+}
+
+.artist-location {
+  font-family: 'Optima LT Std', 'Georgia', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #65635f;
+  margin: 0;
+}
+
+/* -------------------- RESPONSIVENESS -------------------- */
+
+@media (max-width: 1400px) {
+  .painting-stack-container {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 1200px) {
+  .featured-artists-section-wrapper {
+    padding: 56px 50px;
+  }
+}
+
+@media (max-width: 900px) {
+  .featured-artists-section-wrapper {
+    padding: 40px 20px;
+  }
+
+  .artist-cards-list {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Painting Section Adjustments */
+  .featured-paintings-header {
+    padding: 40px 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .featured-paintings-title {
+    font-size: 40px;
+    line-height: 48px;
+  }
+
+  .painting-stack-container {
+    padding: 20px;
+    gap: 40px;
+  }
+
+  .painting-card,
+  .painting-image {
+    width: 180px;
+  }
+
+  /* Artist Section Adjustments */
+  .artists-content-wrapper {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .featured-paintings-title {
+    font-size: 32px;
+  }
+
+  .card-artist-container {
+    height: 80px;
+    gap: 15px;
+  }
+
+  .artist-profile-image {
+    width: 80px;
+    height: 80px;
+  }
+
+  .artists-section-title {
+    font-size: 20px;
+  }
+
+  .artist-name {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
