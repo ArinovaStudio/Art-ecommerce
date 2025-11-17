@@ -33,19 +33,19 @@ public class CartService {
         cartRepository.save(cart);
     }
 
-    public Cart getCart(Long userId) {
+    public Cart getCart(String userId) {
         return cartRepository.findByUserId(userId)
                 .orElseGet(() -> new Cart());
     }
 
-    public void removeItem(Long userId, Long productId) {
+    public void removeItem(String userId, String productId) {
         Cart cart = cartRepository.findByUserId(userId)
                 .orElseThrow(() -> new RuntimeException("Cart not found"));
         cart.removeProduct(productId);
         cartRepository.save(cart);
     }
 
-    public void updateItem(Long userId, Long productId, int quantity) {
+    public void updateItem(String userId, String productId, int quantity) {
         Cart cart = cartRepository.findByUserId(userId)
                 .orElseThrow(() -> new RuntimeException("Cart not found"));
 

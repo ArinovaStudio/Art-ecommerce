@@ -18,13 +18,13 @@ public class OrderController {
     private final OrderService orderService;
 
     @PostMapping("/place/{userId}")
-    public ResponseEntity<Order> placeOrder(@PathVariable Long userId) {
+    public ResponseEntity<Order> placeOrder(@PathVariable String userId) {
         Order order = orderService.placeOrder(userId);
         return ResponseEntity.ok(order);
     }
 
     @GetMapping("/user/{userId}")
-    public ResponseEntity<List<Order>> getOrdersByUser(@PathVariable Long userId) {
+    public ResponseEntity<List<Order>> getOrdersByUser(@PathVariable String userId) {
         return ResponseEntity.ok(orderService.getOrdersByUser(userId));
     }
 
@@ -34,7 +34,7 @@ public class OrderController {
     }
 
     @PutMapping("/cancel/{orderId}")
-    public ResponseEntity<?> cancelOrder(@PathVariable Long orderId) {
+    public ResponseEntity<?> cancelOrder(@PathVariable String orderId) {
         orderService.cancelOrder(orderId);
         return ResponseEntity.ok(Map.of(
                 "response", "Order cancelled successfully"

@@ -23,7 +23,7 @@ public class CartController {
     }
 
     @GetMapping("/{userId}")
-    public ResponseEntity<Cart> getCart(@PathVariable Long userId) {
+    public ResponseEntity<Cart> getCart(@PathVariable String userId) {
         return ResponseEntity.ok(cartService.getCart(userId));
     }
 

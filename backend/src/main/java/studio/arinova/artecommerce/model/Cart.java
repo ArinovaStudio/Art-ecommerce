@@ -18,8 +18,8 @@ import java.util.List;
 public class Cart {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
 
     // One user can have only one cart.
     @OneToOne
@@ -42,7 +42,7 @@ public class Cart {
         items.add(new CartItem(this, product, quantity));
     }
 
-    public void removeProduct(Long productId) {
+    public void removeProduct(String productId) {
         items.removeIf(item -> item.getProduct().getId().equals(productId));
     }
 

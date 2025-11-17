@@ -33,7 +33,7 @@
             final String authHeader = request.getHeader("Authorization");
             final String jwt;
             final String email;
-            final Long id;
+            final String id;
 
             if (authHeader == null || !authHeader.startsWith("Bearer ")) {
                 filterChain.doFilter(request, response);
@@ -43,7 +43,7 @@
             try {
 
                 jwt = authHeader.substring(7);
-                id = Long.valueOf(jwtUtility.extractClaims(jwt).getSubject());
+                id = jwtUtility.extractClaims(jwt).getSubject();
                 email = jwtUtility.extractClaims(jwt).get("email", String.class);
 
 

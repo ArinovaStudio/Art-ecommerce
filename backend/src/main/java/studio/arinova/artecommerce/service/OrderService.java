@@ -20,7 +20,7 @@ public class OrderService {
     private final OrderRepository orderRepository;
     private final CartRepository cartRepository;
 
-    public Order placeOrder(Long userId) {
+    public Order placeOrder(String userId) {
         Cart cart = cartRepository.findByUserId(userId)
                 .orElseThrow(() -> new RuntimeException("Cart not found for user ID:" + userId));
 
@@ -66,7 +66,7 @@ public class OrderService {
         return savedOrder;
     }
 
-    public List<Order> getOrdersByUser(Long userId) {
+    public List<Order> getOrdersByUser(String userId) {
         return orderRepository.findByUserId(userId);
     }
 
@@ -74,7 +74,7 @@ public class OrderService {
         return orderRepository.findByStatus(status);
     }
 
-    public void cancelOrder(Long orderId) {
+    public void cancelOrder(String orderId) {
         Order order = orderRepository.findById(orderId)
                 .orElseThrow(() -> new RuntimeException("No order found of the ID"));
 

@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import studio.arinova.artecommerce.model.CartItem;
 
 @Repository
-public interface CartItemRepository extends JpaRepository<CartItem, Long> {
+public interface CartItemRepository extends JpaRepository<CartItem, String> {
 }

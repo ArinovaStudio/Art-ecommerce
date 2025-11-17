@@ -25,7 +25,6 @@ public class ProductController {
             ) {
 
         productService.addProduct(productRequest, files);
-
     }
 
 }

@@ -1,13 +1,7 @@
 package studio.arinova.artecommerce.repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import studio.arinova.artecommerce.model.Product;
 
-import java.util.Optional;
-
-public interface ProductRepository {
-
-    // For saving the product.
-    void save(Product product);
-
-    Optional<Product> findById(Long productId);
+public interface ProductRepository extends JpaRepository<Product, String> {
 }

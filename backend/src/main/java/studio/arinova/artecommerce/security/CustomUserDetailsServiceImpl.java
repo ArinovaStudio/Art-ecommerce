@@ -6,19 +6,21 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import studio.arinova.artecommerce.model.User;
-import studio.arinova.artecommerce.repository.UserRepositoryImpl;
+import studio.arinova.artecommerce.repository.UserRepository;
+
+import java.util.Optional;
 
 @Service
 @Slf4j
 @RequiredArgsConstructor
 public class CustomUserDetailsServiceImpl implements UserDetailsService {
 
-    private final UserRepositoryImpl userRepository;
+    private final UserRepository userRepository;
 
     @Override
     public CustomUserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        User user  = userRepository.findByEmail(email);
-        if (user == null) throw new UsernameNotFoundException("No user found");
-        return new CustomUserDetails(user);
+        Optional<User> user  = userRepository.findByEmail(email);
+        if (user.isEmpty()) throw new UsernameNotFoundException("No user found");
+        return new CustomUserDetails(user.get());
     }
 }

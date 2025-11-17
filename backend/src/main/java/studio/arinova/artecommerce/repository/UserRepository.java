@@ -1,11 +1,11 @@
 package studio.arinova.artecommerce.repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import studio.arinova.artecommerce.model.User;
 
-public interface UserRepository {
+import java.util.Optional;
 
-    public User findByEmail(String email);
+public interface UserRepository extends JpaRepository<User, String> {
 
-    public User save(User customer);
-
+    Optional<User> findByEmail(String email);
 }

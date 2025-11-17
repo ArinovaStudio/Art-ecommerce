@@ -9,12 +9,13 @@ import org.springframework.stereotype.Service;
 import studio.arinova.artecommerce.dto.SignupDTO;
 import studio.arinova.artecommerce.dto.OtpDTO;
 import studio.arinova.artecommerce.model.User;
-import studio.arinova.artecommerce.repository.UserRepositoryImpl;
+import studio.arinova.artecommerce.repository.UserRepository;
 import studio.arinova.artecommerce.service.mail.MailService;
 import studio.arinova.artecommerce.utility.GeneralUtility;
 import studio.arinova.artecommerce.utility.MailUtility;
 
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Service
@@ -25,7 +26,7 @@ public class SignupService {
     // If multiple threads are willing to access it made this as concurrent hash map.
     private final Map<String, SignupDTO> persistanceStorage = new ConcurrentHashMap<>();
     private final Map<String, String> otpPersistenceStorage = new ConcurrentHashMap<>();
-    private final UserRepositoryImpl userRepository;
+    private final UserRepository userRepository;
     private final GeneralUtility generalUtility;
     private final PasswordEncoder passwordEncoder;
     private final MailUtility mailUtility;
@@ -34,8 +35,8 @@ public class SignupService {
     public ResponseEntity<?> signupHandlerCustomer(SignupDTO signupDTO) {
         // Here we have to firstly check that if any user doesn't exist by the email.
         // If it does then we will return a bad request response.
-        User user = userRepository.findByEmail(signupDTO.getEmail());
-        if (user != null) {
+        Optional<User> user = userRepository.findByEmail(signupDTO.getEmail());
+        if (user.isPresent()) {
             return ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)
                     .body(Map.of("response", "User already exists by the email."));

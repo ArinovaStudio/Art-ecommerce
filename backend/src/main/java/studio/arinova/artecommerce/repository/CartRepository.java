@@ -7,6 +7,6 @@ import studio.arinova.artecommerce.model.Cart;
 import java.util.Optional;
 
 @Repository
-public interface CartRepository extends JpaRepository<Cart, Long> {
-    Optional<Cart> findByUserId(Long userId);
+public interface CartRepository extends JpaRepository<Cart, String> {
+    Optional<Cart> findByUserId(String userId);
 }

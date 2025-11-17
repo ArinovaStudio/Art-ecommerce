@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -13,5 +15,6 @@ public class ProductRequestDTO {
     private String title;
     private String description;
     private String category;
-    private Long artistId;
+    private BigDecimal price;
+    private String artistId;
 }

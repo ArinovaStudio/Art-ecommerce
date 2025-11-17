@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 public class CustomUserDetails implements UserDetails {
 
-    private final Long id;
+    private final String id;
     private final String name;
     private final String email;
     private final String password;
