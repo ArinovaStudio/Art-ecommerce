@@ -3,7 +3,7 @@ import { Search, UserRound, ShoppingBag } from 'lucide-react';
 
 const Navbar = () => {
   return (
-    <nav className="navbar-container">
+    <nav className="navbar-container ">
       <div className="navbar-logo">LOGO</div>
 
       <div className="navbar-center-group">

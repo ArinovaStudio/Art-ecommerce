@@ -1,3 +1,7 @@
+/* ======================================= */
+/* 1. FEATURED PAINTINGS SECTION           */
+/* ======================================= */
+
 .featured-paintings-section-wrapper {
   display: flex;
   flex-direction: column;
@@ -12,7 +16,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 56px 66px;
+  /* Padding converted to rem */
+  padding: 3.5rem 4.125rem; /* 56px 66px */
   width: 100%;
   box-sizing: border-box;
 }
@@ -20,8 +25,9 @@
 .featured-paintings-title {
   font-family: 'Optima LT Std', 'Georgia', serif;
   font-weight: 400;
-  font-size: 52px;
-  line-height: 56px;
+  /* Font size converted to rem */
+  font-size: 3.25rem; /* 52px */
+  line-height: 1.07em; /* 56px / 52px ≈ 1.07em */
   color: #161412;
   margin: 0;
 }
@@ -29,17 +35,18 @@
 .featured-paintings-view-all {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.625rem; /* 10px */
   font-family: sans-serif;
-  font-size: 18px;
+  /* Font size converted to rem */
+  font-size: 1.125rem; /* 18px */
   font-weight: 600;
   cursor: pointer;
   color: #161412;
 }
 
 .featured-paintings-view-all svg {
-  width: 44px;
-  height: 24px;
+  width: 2.75rem; /* 44px */
+  height: 1.5rem; /* 24px */
 }
 
 /* --- painting stack --- */
@@ -48,15 +55,16 @@
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
-  gap: 111px;
+  gap: 6.9375rem; /* 111px */
 
   width: 100%;
-  padding: 40px 66px 115px;
+  /* Padding converted to rem */
+  padding: 2.5rem 4.125rem 7.1875rem; /* 40px 66px 115px */
   box-sizing: border-box;
-
+  padding-left: 18rem;
   overflow-x: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .painting-stack-container::-webkit-scrollbar {
@@ -69,53 +77,54 @@
   flex-direction: column;
   align-items: flex-start;
   padding: 0;
-  gap: 16px;
-  width: 232px;
+  gap: 1rem; /* 16px */
+  width: 14.5rem; /* 232px */
   flex-shrink: 0;
 }
 
 .painting-card.painting-2 {
-  gap: 10px;
+  gap: 0.625rem; /* 10px */
 }
 
 .painting-image {
-  width: 232px;
+  width: 14.5rem; /* 232px */
   background-size: cover;
   background-position: center;
   background-color: #d9d9d9;
 }
 
-/* Specific Image Heights */
+/* Specific Image Heights converted to rem */
 .painting-card.painting-1 .painting-image {
-  height: 216px;
+  height: 13.5rem; /* 216px */
 }
 .painting-card.painting-2 .painting-image {
-  height: 264px;
+  height: 16.5rem; /* 264px */
 }
 .painting-card.painting-3 .painting-image {
-  height: 200px;
+  height: 12.5rem; /* 200px */
 }
 .painting-card.painting-4 .painting-image {
-  height: 264px;
+  height: 16.5rem; /* 264px */
 }
 .painting-card.painting-5 .painting-image {
-  height: 248px;
+  height: 15.5rem; /* 248px */
 }
 
 .painting-details {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 4px;
+  gap: 0.25rem; /* 4px */
   color: #161412;
-  max-width: 232px;
+  max-width: 14.5rem; /* 232px */
 }
 
 .painting-title {
   font-family: 'Optima LT Std', 'Georgia', serif;
   font-weight: 600;
-  font-size: 16px;
-  line-height: 24px;
+  /* Font size converted to rem */
+  font-size: 1rem; /* 16px */
+  line-height: 1.5em; /* 24px / 16px = 1.5em */
   color: #161412;
   margin: 0;
 }
@@ -123,8 +132,9 @@
 .painting-artist {
   font-family: 'Optima LT Std', 'Georgia', serif;
   font-weight: 600;
-  font-size: 14px;
-  line-height: 16px;
+  /* Font size converted to rem */
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.14em; /* 16px / 14px ≈ 1.14em */
   color: #65635f;
   margin: 0;
 }
@@ -133,23 +143,28 @@
   font-family: 'Optima LT Std', 'Georgia', serif;
   font-style: italic;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 16px;
+  /* Font size converted to rem */
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.14em; /* 16px / 14px ≈ 1.14em */
   color: #65635f;
   margin: 0;
 }
 
+/* ======================================= */
+/* 2. FEATURED ARTISTS SECTION             */
+/* ======================================= */
+
 .featured-artists-section-wrapper {
-  /* Frame 19: background: #F4F4F2; padding: 56px 100px; */
   width: 100%;
   background: #f4f4f2; /* Off White 2 */
-  padding: 56px 100px;
+  /* Padding converted to rem */
+  padding: 3.5rem 6.25rem; /* 56px 100px */
   box-sizing: border-box;
   /* Auto layout: gap: 10px; */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 10px;
+  gap: 0.625rem; /* 10px */
   margin: 0 auto;
 }
 
@@ -158,16 +173,17 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 50px;
+  gap: 3.125rem; /* 50px */
   width: 100%;
 }
 
 .artists-section-title {
   font-family: 'Karla', sans-serif;
   font-weight: 400;
-  font-size: 26px;
-  line-height: 24px;
-  letter-spacing: 0.875px;
+  /* Font size converted to rem */
+  font-size: 1.625rem; /* 26px */
+  line-height: 0.92em; /* 24px / 26px ≈ 0.92em */
+  letter-spacing: 0.033em; /* 0.875px / 26px ≈ 0.033em */
   text-transform: uppercase;
   color: #161412;
   margin: 0;
@@ -177,7 +193,7 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  gap: 24px;
+  gap: 1.5rem; /* 24px */
   width: 100%;
 }
 
@@ -186,17 +202,17 @@
   flex-direction: row;
   align-items: center;
   padding: 0;
-  gap: 24px;
+  gap: 1.5rem; /* 24px */
   width: 100%;
-  height: 100px;
+  height: 6.25rem; /* 100px */
   flex-grow: 1;
   box-sizing: border-box;
-  border: 1px solid rgba(101, 99, 95, 0.2); /* Grey / 20% */
+  border: 0.0625rem solid rgba(101, 99, 95, 0.2); /* 1px */
 }
 
 .artist-profile-image {
-  width: 100px;
-  height: 100px;
+  width: 6.25rem; /* 100px */
+  height: 6.25rem; /* 100px */
   flex-shrink: 0;
   background-size: cover;
   background-position: center;
@@ -209,16 +225,17 @@
   flex-direction: column;
   align-items: flex-start;
   padding: 0;
-  gap: 3px;
+  gap: 0.1875rem; /* 3px */
   flex-grow: 1;
-  padding-right: 10px;
+  padding-right: 0.625rem; /* 10px */
 }
 
 .artist-name {
   font-family: 'Karla', sans-serif;
   font-weight: 400;
-  font-size: 24px;
-  line-height: 34px;
+  /* Font size converted to rem */
+  font-size: 1.5rem; /* 24px */
+  line-height: 1.416em; /* 34px / 24px ≈ 1.416em */
   text-transform: uppercase;
   color: #161412;
   margin: 0;
@@ -228,88 +245,94 @@
   font-family: 'Optima LT Std', 'Georgia', serif;
   font-style: italic;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 16px;
+  /* Font size converted to rem */
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.14em; /* 16px / 14px ≈ 1.14em */
   color: #65635f;
   margin: 0;
 }
 
-/* -------------------- RESPONSIVENESS -------------------- */
+/* -------------------- RESPONSIVENESS (REM/EM CONVERSION) -------------------- */
 
-@media (max-width: 1400px) {
+@media (max-width: 87.5rem) {
+  /* 1400px */
   .painting-stack-container {
     justify-content: flex-start;
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 75rem) {
+  /* 1200px */
   .featured-artists-section-wrapper {
-    padding: 56px 50px;
+    padding: 3.5rem 3.125rem; /* 56px 50px */
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 56.25rem) {
+  /* 900px */
   .featured-artists-section-wrapper {
-    padding: 40px 20px;
+    padding: 2.5rem 1.25rem; /* 40px 20px */
   }
 
   .artist-cards-list {
     flex-direction: column;
-    gap: 16px;
+    gap: 1rem; /* 16px */
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
+  /* 768px */
   /* Painting Section Adjustments */
   .featured-paintings-header {
-    padding: 40px 20px;
+    padding: 2.5rem 1.25rem; /* 40px 20px */
     flex-direction: column;
     align-items: flex-start;
-    gap: 15px;
+    gap: 0.9375rem; /* 15px */
   }
 
   .featured-paintings-title {
-    font-size: 40px;
-    line-height: 48px;
+    font-size: 2.5rem; /* 40px */
+    line-height: 1.2em; /* 48px */
   }
 
   .painting-stack-container {
-    padding: 20px;
-    gap: 40px;
+    padding: 1.25rem; /* 20px */
+    gap: 2.5rem; /* 40px */
   }
 
   .painting-card,
   .painting-image {
-    width: 180px;
+    width: 11.25rem; /* 180px */
   }
 
   /* Artist Section Adjustments */
   .artists-content-wrapper {
-    gap: 30px;
+    gap: 1.875rem; /* 30px */
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 30rem) {
+  /* 480px */
   .featured-paintings-title {
-    font-size: 32px;
+    font-size: 2rem; /* 32px */
   }
 
   .card-artist-container {
-    height: 80px;
-    gap: 15px;
+    height: 5rem; /* 80px */
+    gap: 0.9375rem; /* 15px */
   }
 
   .artist-profile-image {
-    width: 80px;
-    height: 80px;
+    width: 5rem; /* 80px */
+    height: 5rem; /* 80px */
   }
 
   .artists-section-title {
-    font-size: 20px;
+    font-size: 1.25rem; /* 20px */
   }
 
   .artist-name {
-    font-size: 20px;
-    line-height: 28px;
+    font-size: 1.25rem; /* 20px */
+    line-height: 1.4em; /* 28px */
   }
 }

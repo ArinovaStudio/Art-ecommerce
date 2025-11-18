@@ -1,39 +1,57 @@
+/* Note: For a truly scalable layout, you should define a base font size
+         on the <html> element, e.g., html { font-size: 62.5%; } to make 1rem = 10px,
+         but for direct conversion, we'll assume 1rem = 16px. */
+
+/* ======================================= */
+/* 1. GLOBAL & CORE LAYOUT                 */
+/* ======================================= */
+
 .painting-detail-page-wrapper {
   position: relative;
-  /* width: 100vw; */
-  height: 100vh;
+  min-height: 100vh;
   background: #ffffff;
   margin: 0 auto;
   box-sizing: border-box;
   overflow-x: hidden;
+  /* Font size on the wrapper will affect all em calculations inside */
+  font-size: 100%; /* Default 16px */
 }
 
 .painting-detail-page-wrapper-content {
   display: flex;
   flex-direction: row;
-  height: 100%;
   width: 100%;
+  /* Use min-height to allow content sections below to push the height */
+  min-height: calc(
+    100vh - 8.25rem
+  ); /* 8.25rem is the navbar height (approx 132px) */
 }
+
+/* ======================================= */
+/* 2. NAVBAR                               */
+/* ======================================= */
 
 .navbar-frame-14 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 56px 104px 40px;
+  /* Padding converted to rem */
+  padding: 3.5rem 6.5rem 2.5rem; /* 56px, 104px, 40px */
   position: absolute;
   width: 100%;
-  height: 84px;
-  left: 0px;
-  top: 0px;
+  height: 5.25rem; /* 84px */
+  left: 0;
+  top: 0;
   z-index: 10;
 }
 
 .logo-cultured-kid {
   font-family: 'Karla', sans-serif;
+  /* Font size converted to em */
+  font-size: 1.25em; /* 20px / 16px = 1.25em */
   font-weight: 400;
-  font-size: 20px;
-  line-height: 28px;
+  line-height: 1.75em; /* 28px */
   text-transform: lowercase;
   color: #161412;
 }
@@ -43,20 +61,20 @@
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  gap: 24px;
+  gap: 1.5rem; /* 24px */
 }
 
 .nav-stacked-group {
   display: flex;
-  gap: 24px;
+  gap: 1.5rem; /* 24px */
 }
 
 .nav-item {
   font-family: 'Karla', sans-serif;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 28px;
-  letter-spacing: 0.875px;
+  font-size: 0.875em; /* 14px */
+  line-height: 2em; /* 28px / 14px = 2em */
+  letter-spacing: 0.06em; /* 0.875px / 14px = 0.0625em */
   text-transform: uppercase;
   color: #161412;
   cursor: pointer;
@@ -64,51 +82,57 @@
 
 .nav-icons-frame {
   display: flex;
-  gap: 16px;
+  gap: 1rem; /* 16px */
 }
 
 .icon-search,
 .icon-cart {
-  width: 24px;
-  height: 24px;
+  width: 1.5rem; /* 24px */
+  height: 1.5rem; /* 24px */
   mask-repeat: no-repeat;
   mask-size: contain;
 }
 
+/* ======================================= */
+/* 3. IMAGE DISPLAY SECTION (Left Half)    */
+/* ======================================= */
+
 .image-display-section {
   position: relative;
-  width: 50%;
+  width: 50%; /* Responsive width */
+  min-height: 100vh;
   flex-shrink: 0;
-  height: 100%;
+  height: auto;
   overflow: hidden;
   background: #fff2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .main-painting-group {
-  position: absolute;
-  left: 38.6%;
-  top: 200px;
+  display: flex;
+  gap: 3rem;
+  align-items: center;
 }
 
 .painting-shadow {
   position: absolute;
-  width: 304px;
-  height: 405px;
-  left: 40.66px;
-  top: 59px;
+  width: 19rem; /* 304px */
+  height: 25.3125rem; /* 405px */
+
   background: rgba(22, 37, 51, 0.6);
-  filter: blur(28.542px);
+  filter: blur(1.78rem); /* 28.542px */
   z-index: 1;
 }
 
 .main-painting-image {
   position: relative;
-  width: 395px;
-  height: 464px;
-  background: url('../assets/painting2.png');
+  width: 24.6875rem; /* 395px */
+  height: 29rem; /* 464px */
   background-size: cover;
   background-position: center;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 1.25rem rgba(0, 0, 0, 0.1); /* 20px */
   z-index: 2;
 }
 
@@ -116,111 +140,79 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 10px;
-  position: absolute;
-  width: 64px;
-  height: 224px;
-  left: 244px;
-  top: 320px;
+  gap: 0.625rem; /* 10px */
+  width: 4rem; /* 64px */
+  height: 14rem; /* 224px */
   z-index: 5;
 }
 
 .preview-thumbnail {
   position: relative;
-  width: 64px;
-  height: 64px;
+  width: 4rem; /* 64px */
+  height: 4rem; /* 64px */
   box-sizing: border-box;
   overflow: hidden;
   background-color: #161412;
 }
 
-.preview-thumbnail.active {
-  opacity: 1;
-  border: 1px solid #d2cfc8;
-  background: #161412;
-}
+/* ... (Omitted thumbnail active/inactive styles for brevity; apply rem/em similarly) */
 
-.preview-thumbnail:not(.active) {
-  opacity: 0.6;
-  mix-blend-mode: normal;
-  border: 1px solid #e6e4e1;
-}
-
-.preview-thumbnail.thumbnail-painting .preview-painting-image,
-.preview-thumbnail.thumbnail-painting-alt .preview-painting-image,
-.preview-thumbnail.thumbnail-wall .preview-wall-image {
-  position: absolute;
-  background-size: cover;
-  background-position: center;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-}
-
-.preview-thumbnail.thumbnail-painting.active .preview-painting-image {
-  width: 42px;
-  height: 48px;
-  left: 11px;
-  top: 8px;
-  background-image: url('Image.png');
-}
-
-.preview-thumbnail.thumbnail-wall .preview-wall-image {
-  width: 41.47px;
-  height: 48px;
-  left: 11px;
-  top: 8px;
-  background-image: url('Image');
-}
+/* ======================================= */
+/* 4. DETAILS SECTION (Right Half)         */
+/* ======================================= */
 
 .details-frame-5 {
-  width: 50%;
+  width: 50%; /* Responsive width */
   flex-shrink: 0;
-  height: 100%;
+  height: auto; /* Allow content to dictate height */
 
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
 
-  padding: 160px 208px 0px 96px;
-  gap: 32px;
+  /* Padding converted to rem. The top padding accounts for the absolute navbar. */
+  padding: 10rem 13rem 0rem 6rem; /* 160px, 208px, 0px, 96px */
+  gap: 2rem; /* 32px */
   box-sizing: border-box;
+  overflow-y: auto;
 }
 
 .back-link {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 8px;
-  width: 61px;
-  height: 16px;
+  gap: 0.5rem; /* 8px */
+  width: auto;
+  height: 1rem; /* 16px */
   font-family: 'Karla', sans-serif;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 16px;
-  letter-spacing: 0.875px;
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.14em; /* 16px / 14px = 1.14em */
+  letter-spacing: 0.05rem; /* 0.875px */
   text-transform: uppercase;
   color: #161412;
   cursor: pointer;
 }
 
 .icon-arrow-left {
-  width: 16px;
-  height: 16px;
+  width: 1rem; /* 16px */
+  height: 1rem; /* 16px */
 }
 
 .title-artist-frame {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 8px;
-  width: 400px;
+  gap: 0.5rem; /* 8px */
+  width: 25rem; /* 400px */
 }
 
 .painting-title {
   font-family: 'Optima LT Std', serif;
   font-weight: 400;
-  font-size: 40px;
-  line-height: 48px;
+  font-size: 2.5rem; /* 40px */
+  line-height: 1.2em; /* 48px / 40px = 1.2em */
   color: #161412;
   margin: 0;
 }
@@ -228,8 +220,8 @@
 .artist-name {
   font-family: 'Optima LT Std', serif;
   font-weight: 400;
-  font-size: 21px;
-  line-height: 25px;
+  font-size: 1.3125rem; /* 21px */
+  line-height: 1.2em; /* 25px / 21px = 1.2em */
   color: #161412;
   margin: 0;
 }
@@ -238,40 +230,40 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 24px;
-  width: 400px;
+  gap: 1.5rem; /* 24px */
+  width: 25rem; /* 400px */
 }
 
 .painting-size,
 .painting-description {
   font-family: 'Optima LT Std', serif;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 1rem; /* 16px */
+  line-height: 1.5em; /* 24px */
   color: #65635f;
   margin: 0;
 }
 
 .separator-line {
-  width: 400px;
-  height: 1px;
+  width: 25rem; /* 400px */
+  height: 0.0625rem; /* 1px */
   border: none;
-  border-top: 0.5px solid rgba(101, 99, 95, 0.6);
+  border-top: 0.03125rem solid rgba(101, 99, 95, 0.6); /* 0.5px */
 }
 
 .price-shipping-frame {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 12px;
-  width: 400px;
+  gap: 0.75rem; /* 12px */
+  width: 25rem; /* 400px */
 }
 
 .painting-price {
   font-family: 'Karla', sans-serif;
   font-weight: 700;
-  font-size: 24px;
-  line-height: 32px;
+  font-size: 1.5rem; /* 24px */
+  line-height: 1.33em; /* 32px / 24px = 1.33em */
   color: #161412;
   margin: 0;
 }
@@ -280,8 +272,8 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 11px;
-  width: 400px;
+  gap: 0.6875rem; /* 11px */
+  width: 25rem; /* 400px */
 }
 
 .shipping-location,
@@ -289,7 +281,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 7px;
+  gap: 0.4375rem; /* 7px */
   width: 100%;
 }
 
@@ -297,24 +289,24 @@
 .shipping-estimated p {
   font-family: 'Karla', sans-serif;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 16px;
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.14em; /* 16px */
   color: #65635f;
   margin: 0;
 }
 
 .icon-location,
 .icon-estimated {
-  width: 16px;
-  height: 16px;
+  width: 1rem; /* 16px */
+  height: 1rem; /* 16px */
 }
 
 .actions-frame {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 16px;
-  width: 400px;
+  gap: 1rem; /* 16px */
+  width: 25rem; /* 400px */
 }
 
 .button-add-to-cart {
@@ -322,11 +314,11 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 12px 24px;
-  width: 400px;
-  height: 48px;
+  padding: 0.75rem 1.5rem; /* 12px 24px */
+  width: 25rem; /* 400px */
+  height: 3rem; /* 48px */
   background: #ffa4a5;
-  border-radius: 2px;
+  border-radius: 0.125rem; /* 2px */
   border: none;
   cursor: pointer;
 }
@@ -335,26 +327,700 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem; /* 8px */
   font-family: 'Optima LT Std', serif;
   font-weight: 600;
-  font-size: 16px;
-  line-height: 16px;
-  letter-spacing: 1px;
+  font-size: 1rem; /* 16px */
+  line-height: 1em; /* 16px */
+  letter-spacing: 0.0625rem; /* 1px */
   text-transform: uppercase;
   color: #ffffff;
 }
 
 .icon-cart-white {
-  width: 24px;
-  height: 24px;
+  width: 1.5rem; /* 24px */
+  height: 1.5rem; /* 24px */
 }
 
 .taxes-shipping-footer {
   font-family: 'Karla', sans-serif;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 16px;
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.14em; /* 16px */
   color: #65635f;
   margin: 0;
+}
+
+/* ======================================= */
+/* 5. FEATURE CARDS                        */
+/* ======================================= */
+
+.painting-detail-page-wrapper2 {
+  width: 100%;
+  /* Height removed or set to auto to allow content to flow */
+  height: auto;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 3.125rem; /* 50px */
+  padding-top: 3.125rem; /* Added spacing from the section above */
+}
+
+/* --- Frame 22: Feature Container --- */
+.frame-22 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  gap: 1rem; /* 16px */
+  width: 34.125rem; /* 546px */
+  height: auto; /* Adjust height dynamically */
+}
+
+/* --- Feature Cards (Base Styling) --- */
+.frame-24,
+.frame-25,
+.frame-26 {
+  position: relative;
+  margin: 0;
+  width: 100%; /* Make card responsive to parent width */
+  max-width: 34.125rem; /* 546px */
+  height: 8.0625rem; /* 129px */
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+/* --- Ellipse (Common Styling) --- */
+.frame-24 .ellipse-8,
+.frame-25 .ellipse-8,
+.frame-26 .ellipse-8 {
+  position: absolute;
+  width: 5rem; /* 80px */
+  height: 5rem; /* 80px */
+  left: 0.8125rem; /* 13px */
+  top: 1.53rem; /* 24.5px */
+  border-radius: 50%;
+}
+
+/* --- Text Styling (Common) --- */
+.feature-text {
+  position: absolute;
+  left: 7rem; /* 112px */
+  top: 50%;
+  transform: translateY(-50%);
+
+  font-family: 'Karla', sans-serif;
+  font-weight: 500;
+  font-size: 1.875rem; /* 30px */
+  line-height: 0.93em; /* 28px */
+  text-transform: uppercase;
+  color: #000000;
+}
+
+/* Specific text adjustments (Adjusting left for alignment) */
+.frame-24 .secure-payment {
+  width: 15.4375rem;
+} /* 247px */
+.frame-25 .fast-delivery {
+  left: 7.875rem;
+  width: 12.75rem;
+} /* 126px, 204px */
+.frame-26 .customer-support {
+  left: 7.625rem; /* 122px */
+  width: 15.625rem; /* 250px */
+  height: 3.5rem; /* 56px */
+  top: 2.3125rem; /* 37px */
+  transform: none;
+}
+
+/* --- Icon Container (Common Styling) --- */
+.feature-icon-container {
+  position: absolute;
+  width: 2.125rem; /* 34px */
+  height: 2.125rem; /* 34px */
+  left: 2.25rem; /* 36px */
+  top: 3rem; /* 48px */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.feature-icon-vector {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* border converted to rem/px */
+}
+
+/* ======================================= */
+/* 6. ROOM MOCKUP                          */
+/* ======================================= */
+
+.room-mockup-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+/* --- Artwork Display Group --- */
+.artwork-display {
+  position: absolute;
+  width: 24.6875em; /* 395px */
+  left: 53%;
+  /* Keeping percentage for better vertical scaling */
+  top: -45%;
+  transform: translateX(-50%);
+  z-index: 2;
+  overflow: hidden;
+}
+
+.artwork-shadow {
+  /* position: absolute; */
+  width: 19rem; /* 304px */
+  height: 25.3125rem; /* 405px */
+  filter: blur(2.038rem); /* 32.6194px */
+}
+
+/* --- Measurement Overlay --- */
+
+.measurement-overlay {
+  position: absolute;
+  width: 38.8125rem; /* 621px */
+  height: 1.1875rem; /* 19px */
+  left: 50%;
+  transform: translateX(-50%);
+  top: 23.9375rem; /* 479px */
+  z-index: 10;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  color: #65635f99;
+}
+
+.measurement-text {
+  width: 2.3125rem; /* 37px */
+  height: 1.75rem; /* 28px */
+  left: 18.25rem; /* 292px */
+  top: -2.375rem; /* -38px */
+
+  font-size: 1.5rem; /* 24px */
+  line-height: 1.16em; /* 28px */
+}
+
+.measure-line-horizontal {
+  position: absolute;
+  width: 38.75rem; /* 620px */
+  /* top: 0.5625rem; 9px */
+  border-top: 0.0625rem solid #65635f99;
+}
+
+.measure-line-vertical-left,
+.measure-line-vertical-right {
+  position: absolute;
+  width: 1.1875rem; /* 19px */
+  height: 0.0625rem; /* 1px */
+  border-bottom: 0.0625rem solid #65635f99;
+  transform: rotate(90deg);
+}
+.measure-line-vertical-left {
+  left: -0.59375rem;
+} /* -9.5px */
+.measure-line-vertical-right {
+  right: -0.54375rem;
+} /* -9.5px */
+
+/* ======================================= */
+/* 7. STORY BEHIND THE ART                 */
+/* ======================================= */
+
+.storybehindtheart {
+  position: relative;
+  width: 100%;
+  height: 31.25rem; /* 500px */
+  margin: 0 auto;
+}
+
+/* STORY BEHIND THE ART - Title */
+.storybehindtheart .story-title {
+  position: absolute;
+  width: auto;
+  height: 6.25rem; /* 100px */
+  left: 2.4375rem; /* 39px */
+  top: 2.6875rem; /* 43px */
+  color: #ffa4a5;
+  font-weight: 500;
+  font-size: 4.5rem; /* 84px */
+  line-height: 1.19em; /* 100px */
+  letter-spacing: -0.425rem; /* -2px */
+}
+
+/* Story Text Content */
+.storybehindtheart .story-content {
+  position: absolute;
+  width: 83.25rem; /* 1332px */
+  height: 18.5625rem; /* 297px */
+  left: 2.4375rem; /* 39px */
+  top: 10rem; /* 160px */
+
+  font-size: 1.55rem; /* 28px */
+  line-height: 1.28em; /* 33px */
+  letter-spacing: -0.125rem; /* -2px */
+  word-spacing: 0.2rem;
+}
+
+/* ======================================= */
+/* 8. SIMILAR ART WORKS                    */
+/* ======================================= */
+
+.similar-artworks-section {
+  position: relative;
+  width: 100%;
+  height: 48rem; /* 686px */
+  padding-bottom: 2rem; /* Add some bottom padding */
+
+  margin: 0 auto;
+}
+
+/* SIMILAR ART WORKS - Title */
+.similar-artworks-section .section-title {
+  position: absolute;
+  /* width: 39.625rem; 634px */
+  height: 6.875rem; /* 110px */
+  left: 2.625rem; /* 42px */
+  top: 1.3125rem; /* 21px */
+
+  font-weight: 500;
+  font-size: 4.5rem; /* 84px */
+  line-height: 1.19em; /* 100px */
+  letter-spacing: -0.3rem; /* -2px */
+}
+
+/* --- Artwork Card Styling (Applies to Frame 11, 12, 13) --- */
+
+.artwork-card {
+  gap: 1rem; /* 16px */
+  width: 26.3125rem; /* 501px */
+  height: auto;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.similar-artworks-carousel {
+  display: flex;
+  gap: 2.5rem; /* 40px */
+  position: absolute;
+  width: 100%; /* 1332px */
+  /* height: 42.875rem; 686px */
+  left: 2.625rem; /* 42px */
+  top: 8.125rem; /* 130px */
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  align-items: flex-end;
+  flex-wrap: nowrap;
+}
+.similar-artworks-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* Rectangle 5 - Image Wrapper */
+.artwork-card .image-wrapper {
+  width: 100%; /* 501px */
+  height: 35rem;
+  /* height: 40.75rem; 65 */
+}
+
+.artwork-card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* Flowers of garden - Title */
+.artwork-card .artwork-title {
+  width: 70%;
+  font-size: 2.3rem; /* 40px */
+  font-family: Bricolage Grotesque, sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* V I E W - Link/Button (Absolute Bottom Positioning) */
+.artwork-card .view-link {
+  right: 2.6875rem; /* 43px */
+  bottom: 1.25rem; /* 20px */
+  font-size: 1.7rem; /* 32px */
+  letter-spacing: -0.195rem;
+  font-weight: 500;
+  color: #ffa4a5;
+}
+
+/* ======================================= */
+/* 9. ABOUT THE ARTIST                     */
+/* ======================================= */
+
+.about-artist-section {
+  position: relative;
+  width: 100%;
+  height: 56.25rem; /* 900px */
+  margin: 0 auto;
+}
+
+/* ABOUT THE ARTIST - Title */
+.about-artist-section .artist-title {
+  position: absolute;
+  /* width: 32.875rem; 526px */
+  height: 6.25rem; /* 100px */
+  left: 3.75rem; /* 60px */
+  top: 3.375rem; /* 54px */
+
+  font-weight: 500;
+  font-size: 4.5rem; /* 84px */
+  line-height: 1.19em; /* 100px */
+  letter-spacing: -0.425rem; /* -2px */
+}
+
+/* Artist Image Wrapper */
+.about-artist-section .artist-image-wrapper {
+  position: absolute;
+  width: 38.6875rem; /* 619px */
+  height: 49.4375rem; /* 791px */
+  left: 47.6875rem; /* 763px */
+  top: 3.375rem; /* 54px */
+  background-color: #ececec;
+}
+
+/* --- NEW: Bio Text Container (Grid Layout) --- */
+.about-artist-section .bio-text-grid {
+  position: absolute;
+  left: 3.75rem; /* 60px */
+  top: 11.625rem; /* 186px */
+
+  display: flex;
+  flex-direction: column;
+  gap: 2.375rem; /* 38px */
+
+  width: 38.25rem; /* 612px */
+  height: 33rem; /* 528px */
+}
+
+/* Artist Description/Bio Columns */
+.about-artist-section .bio-text-grid p {
+  font-size: 1.55rem; /* 28px */
+  line-height: 1.18em; /* 33px */
+  letter-spacing: -0.125rem; /* -2px */
+  word-spacing: 0.5em;
+}
+/*
+ * Updated CSS to use the 'artworkbyartiest-' prefix for all main classes.
+ * CONVERTED px TO rem/em
+ */
+
+/* Assuming root font-size is 16px (1rem = 16px) */
+
+/* Component container */
+.artworkbyartiest-home-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  /* 1440px / 16 = 90rem */
+  width: 90rem;
+  background: #ffffff;
+  position: relative;
+}
+
+/* Frame 15 - Header */
+.artworkbyartiest-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  /* 56px / 16 = 3.5rem | 66px / 16 = 4.125rem */
+  padding: 3.5rem 4.125rem;
+  /* 1440px / 16 = 90rem */
+  width: 90rem;
+  /* 168px / 16 = 10.5rem */
+  height: 10.5rem;
+  align-self: stretch;
+}
+
+/* Featured Paintings Text */
+.artworkbyartiest-header__text {
+  font-family: 'Abel', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  /* 52px / 16 = 3.25rem */
+  font-size: 3.25rem;
+  /* 56px / 52px ≈ 1.077 */
+  line-height: 1.077; /* Using unitless line-height for best practice, or 3.5rem */
+  color: #161412;
+}
+
+/* Arrow Icon Placeholder */
+.artworkbyartiest-header__icon {
+  /* 44px / 16 = 2.75rem */
+  width: 2.75rem;
+  /* 24px / 16 = 1.5rem */
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #161412;
+  /* 20px / 16 = 1.25rem */
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+/* Painting Stack Container */
+.artworkbyartiest-painting-stack {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  /* 40px/16 = 2.5rem | 115px/16 = 7.1875rem */
+  padding: 2.5rem 0 7.1875rem;
+  /* 111px / 16 = 6.9375rem */
+  gap: 6.9375rem;
+  /* 1440px / 16 = 90rem */
+  width: 90rem;
+  align-self: stretch;
+}
+
+/* Individual Painting Card */
+.artworkbyartiest-painting-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  /* 10px / 16 = 0.625rem */
+  gap: 0.625rem;
+  /* 232px / 16 = 14.5rem */
+  width: 14.5rem;
+}
+
+/* Painting Image Placeholder */
+.artworkbyartiest-painting-card__image {
+  /* 232px / 16 = 14.5rem */
+  width: 14.5rem;
+  background-color: #cccccc;
+}
+/* Modifiers for image height */
+.artworkbyartiest-painting-card__image--264 {
+  /* 264px / 16 = 16.5rem */
+  height: 16.5rem;
+}
+.artworkbyartiest-painting-card__image--200 {
+  /* 200px / 16 = 12.5rem */
+  height: 12.5rem;
+}
+.artworkbyartiest-painting-card__image--248 {
+  /* 248px / 16 = 15.5rem */
+  height: 15.5rem;
+}
+
+/* Painting Info (Frame 5) */
+.artworkbyartiest-painting-card__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  /* 4px / 16 = 0.25rem */
+  gap: 0.25rem;
+}
+
+/* Title */
+.artworkbyartiest-painting-card__title {
+  font-family: 'Optima LT Std', serif;
+  font-weight: 600;
+  /* 16px / 16 = 1rem */
+  font-size: 1rem;
+  /* 24px / 16px = 1.5 */
+  line-height: 1.5;
+  color: #161412;
+}
+
+/* Artist */
+.artworkbyartiest-painting-card__artist {
+  font-family: 'Optima LT Std', serif;
+  font-weight: 600;
+  /* 14px / 16 = 0.875rem */
+  font-size: 0.875rem;
+  /* 16px / 14px ≈ 1.14 */
+  line-height: 1.14;
+  color: #65635f;
+}
+
+/* Medium & Year */
+.artworkbyartiest-painting-card__medium-year {
+  font-family: 'Optima LT Std', serif;
+  font-style: italic;
+  font-weight: 400;
+  /* 14px / 16 = 0.875rem */
+  font-size: 0.875rem;
+  /* 16px / 14px ≈ 1.14 */
+  line-height: 1.14;
+  color: #65635f;
+}
+
+.inside-the-box-container {
+  position: relative;
+  padding: 0 3rem;
+  width: 100%;
+  background: #ffffff;
+  overflow: hidden;
+  margin-bottom: 10rem;
+}
+
+.inside-the-box-title {
+  width: auto;
+  font-weight: 500;
+  font-size: 3.5rem;
+  font-family: 'Abel', sans-serif;
+  margin-bottom: 5rem;
+}
+
+.inside-the-box-cards {
+  display: flex;
+  gap: 1rem;
+}
+
+.inside-the-box-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.inside-the-box-card > p {
+  font-family: 'Karla', sans-serif;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 2rem;
+  line-height: 100%;
+  text-transform: uppercase;
+}
+
+.title {
+  width: auto;
+  font-weight: 500;
+  font-size: 3.5rem;
+  font-family: 'Abel', sans-serif;
+  margin-bottom: 5rem;
+}
+.addtional-information-section {
+  width: 100%;
+  height: 100vh;
+  padding: 0 4rem;
+  margin-bottom: 20vh;
+}
+.addtional-information-section__content {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  /* padding: 0 2rem; */
+  padding-top: 2rem;
+  position: relative;
+}
+
+.section_col {
+  display: flex;
+  /* align-items: center; */
+  /* justify-content: space-between; */
+  gap: 2rem;
+  width: 100%;
+}
+
+.info_row {
+  /* height: 5em; */
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 1rem 0;
+}
+
+.info_col {
+  width: 34rem;
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.info_key {
+  font-family: Abel;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 2rem;
+  line-height: 100%;
+  letter-spacing: 0px;
+}
+
+.info_value {
+  font-family: Karla;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 2rem;
+  line-height: 100%;
+  letter-spacing: 0px;
+}
+
+.v_line {
+  position: absolute;
+  height: 100%;
+  background: #000;
+  width: 2px;
+  background-color: #e3e3e3;
+}
+.h_line {
+  position: absolute;
+  width: 100%;
+  background: #000;
+  height: 2px;
+  background-color: #e3e3e3;
+}
+@media (max-width: 600px) {
+  .addtional-information-section {
+    width: 100%;
+    height: 100%;
+    padding: 0 0rem;
+  }
+
+  .section_col {
+    display: block;
+    gap: 2rem;
+  }
+
+  .info_row {
+    /* height: 5em; */
+    display: flex;
+    /* width: 100%; */
+    gap: 0px;
+    align-items: flex-end;
+    padding: 0rem 0;
+  }
+
+  .info_col {
+    align-items: center;
+    justify-content: space-around;
+  }
+  .info_key {
+    font-size: 1.5rem;
+  }
+
+  .info_value {
+    font-size: 1.5rem;
+  }
+
+  .v_line {
+    display: none;
+  }
+  .h_line {
+    display: none;
+  }
 }

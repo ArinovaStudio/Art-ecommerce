@@ -1,11 +1,16 @@
+/* ======================================= */
+/* 1. PAGE WRAPPER & HEADER                */
+/* ======================================= */
+
 .top-rated-page-wrapper {
   width: 100%;
   min-height: 100vh;
   background: #ffffff;
-  padding: 41px 0px;
+  /* Padding converted to rem */
+  padding: 2.5625rem 0; /* 41px */
   box-sizing: border-box;
   font-family: sans-serif;
-  padding-bottom: 150px;
+  padding-bottom: 9.375rem; /* 150px */
 }
 
 .page-header {
@@ -13,114 +18,125 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 50px;
-  padding: 0 82px;
+  margin-bottom: 3.125rem; /* 50px */
+  /* Padding converted to rem */
+  padding: 0 5.125rem; /* 82px */
 }
 
 .header-title {
   font-family: 'SF Pro', sans-serif;
   font-weight: 270;
-  font-size: 72px;
-  line-height: 86px;
+  /* Font size converted to rem */
+  font-size: 4.5rem; /* 72px */
+  line-height: 1.19em; /* 86px / 72px = 1.19em */
   text-transform: capitalize;
   color: #000000;
 }
+
+.filter-active {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* ======================================= */
+/* 2. HEADER DECORATION                    */
+/* ======================================= */
 
 .header-decoration {
   display: flex;
   align-items: center;
   position: absolute;
-  top: 100px;
-  width: 470px;
+  top: 6.25rem; /* 100px */
+  width: 29.375rem; /* 470px */
   left: 0;
 }
 
 .line-divider {
-  width: 420px;
+  width: 26.25rem; /* 420px */
   height: 0;
-  border-top: 2px solid #000000;
-  margin-right: 6px;
+  border-top: 0.125rem solid #000000; /* 2px */
+  margin-right: 0.375rem; /* 6px */
 }
 
 .dot {
-  width: 8px;
-  height: 8px;
+  width: 0.5rem; /* 8px */
+  height: 0.5rem; /* 8px */
   border-radius: 50%;
-  margin-right: 6px;
-}
-
-.dot-filled {
-  background: #ffa4a5;
+  margin-right: 0.375rem; /* 6px */
 }
 
 .dot-bordered {
   box-sizing: border-box;
-  border: 1px solid #000000;
+  border: 0.0625rem solid #000000; /* 1px */
 }
+
+/* ======================================= */
+/* 3. HEADER FILTERS                       */
+/* ======================================= */
 
 .header-filters {
   display: flex;
-
-  /* margin-right: 50px; */
 }
 
 .filter-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 6px 32px;
-  height: 41px;
-  border-radius: 60px;
+  /* Padding converted to rem */
+  padding: 0.375rem 2rem; /* 6px 32px */
+  height: 2.5625rem; /* 41px */
+  border-radius: 3.75rem; /* 60px */
   cursor: pointer;
   font-family: 'Bricolage Grotesque', sans-serif;
   font-weight: 400;
-  font-size: 24px;
-  line-height: 29px;
-  letter-spacing: -0.02em;
+  /* Font size converted to rem */
+  font-size: 1.5rem; /* 24px */
+  line-height: 1.2em; /* 29px / 24px = 1.2em */
+  letter-spacing: -0.013em; /* -0.02em * (16/24) */
   text-transform: capitalize;
-  margin-left: 16px;
+  margin-left: 1rem; /* 16px */
   transition: all 0.2s;
-}
-
-.filter-active {
-  background: #000000;
-  color: #ffffff;
-}
-
-.filter-inactive {
-  background: #f0f0f0;
-  color: #5e5e5e;
 }
 
 .header-view-all {
   font-family: 'SF Pro', sans-serif;
   font-weight: 540;
-  font-size: 52px;
-  line-height: 62px;
+  /* Font size converted to rem */
+  font-size: 3.25rem; /* 52px */
+  line-height: 1.19em; /* 62px / 52px = 1.19em */
   text-transform: capitalize;
   color: #ffa4a5;
   cursor: pointer;
 }
 
+/* ======================================= */
+/* 4. ART CARDS SECTION (Grid & Flex)      */
+/* ======================================= */
+
 .cards-section-container {
   /* DEFAULT (PORTRAIT MODE) */
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 60px;
-  padding-top: 150px;
+  display: flex;
+  gap: 3.75rem; /* 60px */
+  padding-top: 9.375rem; /* 150px */
   width: 100%;
+  overflow-x: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
 }
 
+.cards-section-container::-webkit-scrollbar {
+  display: none;
+}
 .art-display-card {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  width: 100%;
+  gap: 1rem; /* 16px */
+  width: 30rem;
 }
 
 .art-display-card .card-image-container {
   /* Portrait aspect ratio */
-  height: 652px;
+  height: 40.75rem; /* 652px */
   background-color: #d9d9d9;
   background-size: cover;
   background-position: center;
@@ -137,8 +153,9 @@
 .card-title {
   font-family: 'Bricolage Grotesque', sans-serif;
   font-weight: 500;
-  font-size: 40px;
-  line-height: 48px;
+  /* Font size converted to rem */
+  font-size: 2.5rem; /* 40px */
+  line-height: 1.2em; /* 48px / 40px = 1.2em */
   text-transform: capitalize;
   color: #000000;
   max-width: 70%;
@@ -147,13 +164,15 @@
 .card-view-link {
   font-family: 'SF Pro', sans-serif;
   font-weight: 540;
-  font-size: 32px;
-  line-height: 38px;
+  /* Font size converted to rem */
+  font-size: 2rem; /* 32px */
+  line-height: 1.1875em; /* 38px / 32px = 1.1875em */
   text-transform: capitalize;
   color: #ffa4a5;
   cursor: pointer;
 }
 
+/* Landscape/Carousel View */
 .cards-section-container.landscape-active {
   display: flex;
   flex-wrap: nowrap;
@@ -161,7 +180,7 @@
   overflow-x: auto;
   overflow-y: hidden;
 
-  gap: 40px;
+  gap: 2.5rem; /* 40px */
 
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
@@ -174,12 +193,12 @@
 .cards-section-container.landscape-active .art-display-card {
   flex-shrink: 0;
   width: 100%;
-  max-width: 1107px;
+  max-width: 69.1875rem; /* 1107px */
   grid-column: unset;
 }
 
 .cards-section-container.landscape-active
   .art-display-card
   .card-image-container {
-  height: 652px;
+  height: 40.75rem; /* 652px */
 }

@@ -86,7 +86,7 @@ const ArtCard = ({
             alt="frame"
             className="w-full h-full block transition-transform duration-300 ease-in-out"
             style={{
-              width: '100%',
+              width: '95%',
               height: '100%',
               display: 'block',
               zIndex: 3,
@@ -105,13 +105,11 @@ const ArtCard = ({
               left: '10px',
               right: '10px',
               bottom: '10px',
-              width: 'calc(100% - 20px)',
+              width: 'calc(100% - 30px)',
               height: 'calc(100% - 20px)',
               objectFit: 'cover',
               borderRadius: '2px',
-              zIndex: -1,
-              // transition: 'all 0.35s ease-in-out',
-              opacity: isFeatured ? 1 : 0.9
+              zIndex: -1
             }}
           />
         </div>
