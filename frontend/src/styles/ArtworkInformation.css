@@ -1,0 +1,66 @@
+.desktop-wrapper {
+  position: relative;
+  height: 64rem; /* 1024px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Heading */
+.heading {
+  position: absolute;
+  left: 3rem; /* 48px */
+  top: 3.3125rem; /* 53px */
+  width: 44.1875rem; /* 707px */
+  height: 5.75rem; /* 92px */
+
+  font-family: 'Abel';
+  font-weight: 400;
+  font-size: 3.5rem; /* 72px */
+  line-height: 5.75rem; /* 92px */
+  color: #000;
+}
+
+/* Row */
+.row {
+  /* position: absolute; */
+  width: 30.5625rem;
+  height: 2.125rem; /* 34px */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.625rem 0;
+  gap: 0.625rem; /* 10px */
+}
+
+/* Label */
+.label {
+  font-family: 'Abel';
+  font-size: 1.625rem; /* 42px */
+  line-height: 3.375rem; /* 54px */
+  color: #000;
+}
+
+/* Value */
+.value {
+  font-family: 'Karla';
+  font-size: 1.625rem; /* 42px */
+  line-height: 3.0625rem; /* 49px */
+  color: #000;
+}
+
+/* Horizontal lines */
+.line.horizontal {
+  position: absolute;
+  width: 81.5075rem; /* 1304.14px */
+  border-top: 0.125rem solid #e3e3e3; /* 2px */
+}
+
+/* Vertical line */
+.line.vertical {
+  position: absolute;
+  height: 54.25rem; /* 868px */
+  border-left: 0.125rem solid #e3e3e3; /* 2px */
+  /* calc(50% + 428.03px - 868.07px/2) */
+  top: 12.3125rem; /* 197px */
+}

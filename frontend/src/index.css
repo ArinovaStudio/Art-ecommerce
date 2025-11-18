@@ -1,5 +1,4 @@
 @import 'tailwindcss';
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500&family=DM+Serif+Display&family=Inria+Serif&family=Instrument+Serif&family=Karla:wght@400;600;700&display=swap');
 :root {
   --color-primary: #1e293b;
   --color-secondary: #3b82f6;

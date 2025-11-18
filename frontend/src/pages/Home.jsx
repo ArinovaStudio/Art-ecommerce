@@ -1,25 +1,24 @@
-// HomePage.jsx
-import React, { useEffect, useState } from 'react';
-import Navbar from '../components/Navbar';
-import ArtCard from '../components/ArtCard';
+import React, { useState } from 'react';
+import homeBg from '../assets/home-bg.jpg';
+import art1 from '../assets/art1.jpg'; // Import the image you want to place in the mapped area
 import '../styles/HomePage.css';
-
-import ImageMapper from 'react-image-mapper';
-import mainBackground from '../assets/home-bg.jpg';
-// import heroFeatureImage from '../assets/art1.jpg';
-// import heroFeatureImage from '../assets/art1.jpg';
+// Import image assets
 import artBorder from '../assets/art-border.png';
-
-import art1 from '../assets/art1.jpg';
 import art2 from '../assets/art2.jpg';
 import art3 from '../assets/art3.jpg';
 import art4 from '../assets/art1.jpg';
-// ------------------------------------------------------------------
+import ArtCard from '../components/ArtCard';
+import Navbar from '../components/Navbar';
+// Assuming the original image size is known,
+// for responsive scaling let's assume it's 3840px wide and 2160px high (16:9 4K)
+const IMAGE_WIDTH = 3840;
+const IMAGE_HEIGHT = 2160;
 
-const HomePage = () => {
+function HomePage() {
   const [featuredIndex, setFeaturedIndex] = useState(0);
 
   const artData = [
+    // ... (Your original artData array)
     {
       style: 'featured',
       author: 'Adarsh Pandit',
@@ -60,95 +59,73 @@ const HomePage = () => {
       artBorder: artBorder
     }
   ];
-  const MAP = {
-    name: 'frame-map',
-    areas: [
-      {
-        id: 1,
-        name: 'frame',
-        shape: 'rect',
-        coords: [100, 100, 500, 400],
-        fillColor: 'rgba(255,0,0,0.3)',
-        strokeColor: 'red'
-      }
-    ]
+  // Original area coordinates: 2575, 424, 3116, 1183
+  // These define the top-left (x1, y1) and bottom-right (x2, y2) of the rectangle
+  const x1 = 2375;
+  const y1 = 514;
+  const x2 = 2916;
+  const y2 = 1503;
+
+  const RECT_COORDS = {
+    x1: x1,
+    y1: y1,
+    x2: x2,
+    y2: y2,
+    width: x2 - x1, // Calculate width from the coordinates
+    height: y2 - y1 // Calculate height from the coordinates
   };
 
-  const [bgWidth, setBgWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    function handleResize() {
-      setBgWidth(window.innerWidth);
-    }
-    window.addEventListener('resize', handleResize);
-
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
   return (
-    <div className="home-page-wrapper" style={{ position: 'relative' }}>
-      <div
+    <div
+      style={{
+        position: '',
+        display: 'inline-block',
+        width: '100%',
+        height: 'auto',
+        overflowX: 'hidden'
+      }}
+    >
+      {/* 1. The Main Background Image */}
+      <img
+        src={homeBg}
+        alt="Interactive background"
         style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
+          display: 'block',
           width: '100%',
-          height: '100vh',
-          zIndex: -1,
-          overflow: 'hidden'
+          position: 'absolute'
         }}
-      >
-        <ImageMapper
-          src={mainBackground}
-          map={MAP}
-          width={bgWidth}
-          responsive={true}
-        />
-      </div>
+        className=" object-cover"
+      />
+
+      {/* 2. The Overlaid Image */}
+      {/* This image is absolutely positioned and sized to cover the area defined by RECT_COORDS */}
 
       <div
         style={{
           position: 'absolute',
-          top: `${(160 / 1080) * 100}%`,
-          right: `${(380 / 1920) * 100}%`,
-          width: `${((810 - 500) / 1920) * 100}%`,
-          height: `${((600 - 220) / 1080) * 100}%`,
-          objectFit: 'cover',
-          zIndex: -1,
-          pointerEvents: 'none'
+          // Calculate 'left', 'top', 'width', 'height' as percentages for responsiveness
+          left: `${(RECT_COORDS.x1 / IMAGE_WIDTH) * 100}%`,
+          top: `${(RECT_COORDS.y1 / IMAGE_HEIGHT) * 100}%`,
+          width: `${(RECT_COORDS.width / IMAGE_WIDTH) * 100}%`,
+          height: `${(RECT_COORDS.height / IMAGE_HEIGHT) * 100}%`,
+          objectFit: 'cover', // Ensures the image fills the rectangle area
+          pointerEvents: 'none', // IMPORTANT: Allows clicks to pass through to the <area>
+          opacity: 1, // Ensure it's always visible
+          // Optional: Add a subtle border or box-shadow if you want to define its edges
+          border: '2px solid rgba(255, 255, 255, 0.7)'
         }}
       >
-        {/* BORDER / FRAME */}
-        <img
-          src={artBorder}
-          alt="frame"
-          style={{
-            width: '100%',
-            height: '100%',
-            display: 'block',
-            zIndex: 3,
-            scale: 1.1
-          }}
-        />
-
-        {/* PAINTING INSIDE FRAME */}
         <img
           key={featuredIndex}
-          src={artData[featuredIndex]?.image}
-          alt="art"
-          className="art-card-image fade-image transition-all  duration-600 ease-in-out"
-          style={{
-            position: 'absolute',
-            top: '10px',
-            left: '10px',
-            right: '10px',
-            bottom: '10px',
-            width: 'calc(100% - 20px)',
-            height: 'calc(100% - 20px)',
-            objectFit: 'cover',
-            borderRadius: '2px',
-            zIndex: -1
-          }}
+          src={artData[featuredIndex].image}
+          alt="Overlaid art"
+          className="absolute h-full w-full object-cover 
+                   transition duration-700 ease-in-out opacity-100"
+        />
+        <img
+          src={artBorder} // The image you want to show
+          alt="Overlaid art"
+          className="absolute w-full h-full scale-120"
         />
       </div>
 
@@ -178,6 +155,6 @@ const HomePage = () => {
       </main>
     </div>
   );
-};
+}
 
 export default HomePage;
